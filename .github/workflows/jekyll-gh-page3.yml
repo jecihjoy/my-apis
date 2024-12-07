@@ -18,6 +18,7 @@ concurrency:
 
 jobs:
   build:
+    slate-documentation:
       runs-on: ubuntu-latest
       steps:
       - uses: actions/checkout@v2
@@ -27,8 +28,8 @@ jobs:
         if: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master' }}
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
-          branch: gh-pages
-          folder: build
+          source: ./
+          destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
